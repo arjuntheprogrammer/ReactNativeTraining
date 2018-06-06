@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {AppRegistry, Text, View} from 'react-native';
+import {AppRegistry, StyleSheet, Text, View} from 'react-native';
 
 class Blink extends Component{
     constructor(props){
@@ -18,12 +18,22 @@ class Blink extends Component{
     render(){
         let display = this.state.isShowingText ? this.props.text : ' ';
         return (
-            <Text>{display}</Text>
+            <Text style = { styles.bigblue}>{display}</Text>
         );
     }
-
-
 }
+
+
+const styles = StyleSheet.create({
+    bigblue: {
+        color: 'blue',
+        fontWeight: 'bold',
+        fontSize: 30,
+    },
+    red: {
+        color: 'red',
+    },
+});
 
 export default class BlinkApp extends Component{
     render(){
