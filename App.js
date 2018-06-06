@@ -1,52 +1,20 @@
-import React, {Component} from 'react';
-import {AppRegistry, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { AppRegistry, View } from 'react-native';
 
-class Blink extends Component{
-    constructor(props){
-        super(props);
-        this.state = {isShowingText: true};
-
-        //Toggle the state every second
-
-        setInterval(() => {
-            this.setState(previousState => {
-                return {isShowingText: !previousState.isShowingText};
-            });
-        }, 1000);
-    }
-
-    render(){
-        let display = this.state.isShowingText ? this.props.text : ' ';
-        return (
-            <Text style = { styles.bigblue}>{display}</Text>
-        );
-    }
+export default class FlexDimensionsBasics extends Component {
+  render() {
+    return (
+      // Try removing the `flex: 1` on the parent View.
+      // The parent will not have dimensions, so the children can't expand.
+      // What if you add `height: 300` instead of `flex: 1`?
+      <View style={{flex: 1}}>
+        <View style={{flex: 1, backgroundColor: 'powderblue'}} />
+        <View style={{flex: 2, backgroundColor: 'skyblue'}} />
+        <View style={{flex: 3, backgroundColor: 'steelblue'}} />
+      </View>
+    );
+  }
 }
 
-
-const styles = StyleSheet.create({
-    bigblue: {
-        color: 'blue',
-        fontWeight: 'bold',
-        fontSize: 30,
-    },
-    red: {
-        color: 'red',
-    },
-});
-
-export default class BlinkApp extends Component{
-    render(){
-        return (
-            <View>
-                <Blink text = "I love my INDIA"/>
-                <Blink text = "Yes I love my INDIA"/>
-                <Blink text = "Yeh Mera INDIA"/>
-                <Blink text = "I love my INDIA"/>
-            </View>
-        );
-    }
-}
-
-AppRegistry.registerComponent('AwesomeProject',()=> BlinkApp );
-
+// skip this line if using Create React Native App
+AppRegistry.registerComponent('AwesomeProject', () => FlexDimensionsBasics);
